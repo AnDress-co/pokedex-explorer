@@ -5,10 +5,10 @@ import SearchBar from '../components/SearchBar';
 import CardPokemon from '../components/CardPokemon';
 import { getPokemonByQuery, NotFoundError } from '../services/pokeApi'; // ajusta la ruta
 
-export default function ListScreen() {
+export default function ListScreen({ navigation }) {
     const { items, status, loadingMore, loadMore, retry } = useListPokedex();
     const [search, setSearch] = useState({ status: 'idle', item: null });
-
+    
     const handleSearch = async (query) => {
         if (!query) {
             setSearch({ status: 'idle', item: null });
@@ -42,7 +42,7 @@ export default function ListScreen() {
     }
 
     const isSearching = search.status !== 'idle';
-    const data = search.status === 'found' ? [search.item] : items;
+    const data = search.status === 'found' ? [search.item] : items;        
 
     return (
         <View style={styles.container}>
@@ -58,7 +58,7 @@ export default function ListScreen() {
                     numColumns={2}
                     contentContainerStyle={styles.list}
                     renderItem={({ item }) => (
-                        <CardPokemon item={item} />
+                        <CardPokemon item={item} onPress={() => navigation.navigate('Detail', { dataPokemon: item })}/>
                     )}
                     onEndReached={isSearching ? null : loadMore}
                     onEndReachedThreshold={0.5}

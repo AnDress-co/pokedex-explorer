@@ -33,3 +33,12 @@ export async function getPokemonByQuery(query) {
   return { id: data.id, name: data.name, image: imageUrl(data.id) };
 }
 
+export async function getPokemonDetail(id) {
+  const data = await request(`/pokemon/${id}`);
+  return {
+    types: data.types.map((t) => t.type.name),
+    height: data.height / 10, // metros
+    weight: data.weight / 10, // kg
+    stats: data.stats.map((s) => ({ name: s.stat.name, value: s.base_stat })),
+  };
+}

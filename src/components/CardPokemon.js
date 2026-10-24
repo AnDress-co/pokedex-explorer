@@ -5,7 +5,7 @@ export default function CardPokemon({ item, onPress }) {
   return (
     <Pressable
       style={({ pressed }) => [styles.card, pressed && styles.pressed]}
-      onPress={() => onPress(item)}
+      onPress={onPress}
     >
       <Image source={{ uri: item.image }} style={styles.image} />
       <Text style={styles.number}>#{String(item.id).padStart(3, '0')}</Text>

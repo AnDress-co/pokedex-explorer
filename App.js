@@ -17,13 +17,20 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator
             initialRouteName="List"
-            screenOptions={{ 
-              headerShown: false, 
+            screenOptions={{              
               contentStyle: { backgroundColor: '#F5F5F7' } 
             }}
           >
-            <Stack.Screen name="List" component={ListScreen} />
-            <Stack.Screen name="Detail" component={DetailScreen} />
+            <Stack.Screen 
+              name="List" 
+              component={ListScreen} 
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen 
+              name="Detail" 
+              component={DetailScreen} 
+              options={{ headerShown: true, title: 'Detalle del Pokémon', headerBackTitle: 'Atras' }}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>
