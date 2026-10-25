@@ -8,7 +8,7 @@ import { getPokemonByQuery, NotFoundError } from '../services/pokeApi'; // ajust
 export default function ListScreen({ navigation }) {
     const { items, status, loadingMore, loadMore, retry } = useListPokedex();
     const [search, setSearch] = useState({ status: 'idle', item: null });
-    
+
     const handleSearch = async (query) => {
         if (!query) {
             setSearch({ status: 'idle', item: null });
@@ -42,12 +42,12 @@ export default function ListScreen({ navigation }) {
     }
 
     const isSearching = search.status !== 'idle';
-    const data = search.status === 'found' ? [search.item] : items;        
+    const data = search.status === 'found' ? [search.item] : items;
 
     return (
         <View style={styles.container}>
             <Text style={styles.title}>PokéDex Explorer</Text>
-            <SearchBar onSearch={handleSearch} />            
+            <SearchBar onSearch={handleSearch} />
             {search.status === 'loading' && <ActivityIndicator style={styles.footer} />}
             {search.status === 'notfound' && <Text style={styles.message}>No se encontró ningún Pokémon.</Text>}
             {search.status === 'error' && <Text style={styles.message}>Error al buscar. Intenta de nuevo.</Text>}
@@ -58,7 +58,7 @@ export default function ListScreen({ navigation }) {
                     numColumns={2}
                     contentContainerStyle={styles.list}
                     renderItem={({ item }) => (
-                        <CardPokemon item={item} onPress={() => navigation.navigate('Detail', { dataPokemon: item })}/>
+                        <CardPokemon item={item} onPress={() => navigation.navigate('Detail', { dataPokemon: item })} />
                     )}
                     onEndReached={isSearching ? null : loadMore}
                     onEndReachedThreshold={0.5}
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     center: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12 },
     title: { fontSize: 24, fontWeight: '700', textAlign: 'center' },
     message: { textAlign: 'center', marginTop: 20, fontSize: 16 },
-    list: { padding: 8 },    
+    list: { padding: 8 },
     footer: { padding: 16 },
     counter: { textAlign: 'center', marginVertical: 8, fontSize: 12, fontWeight: '600' },
 });

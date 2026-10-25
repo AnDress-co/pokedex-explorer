@@ -33,6 +33,6 @@ export default function SearchBar({ onSearch }) {
 const styles = StyleSheet.create({
   container: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 12, paddingVertical: 8 },
   input: { flex: 1, borderWidth: 1, borderColor: '#ccc', borderRadius: 8, padding: 10 },
-  button: { backgroundColor: '#3aaa69', paddingHorizontal: 16, paddingVertical: 12, borderRadius: 8 },
+  button: { backgroundColor: '#3299ee', paddingHorizontal: 16, paddingVertical: 12, borderRadius: 8 },
   buttonText: { color: 'white', fontWeight: '600' },
 });

@@ -29,7 +29,7 @@ export default function App() {
             <Stack.Screen 
               name="Detail" 
               component={DetailScreen} 
-              options={{ headerShown: true, title: 'Detalle del Pokémon', headerBackTitle: 'Atras' }}
+              options={{ headerShown: false }}
             />
           </Stack.Navigator>
         </NavigationContainer>

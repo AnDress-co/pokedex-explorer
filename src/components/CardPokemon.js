@@ -2,16 +2,16 @@ import react from 'react';
 import { Image, Pressable, StyleSheet, Text } from 'react-native';
 
 export default function CardPokemon({ item, onPress }) {
-  return (
-    <Pressable
-      style={({ pressed }) => [styles.card, pressed && styles.pressed]}
-      onPress={onPress}
-    >
-      <Image source={{ uri: item.image }} style={styles.image} />
-      <Text style={styles.number}>#{String(item.id).padStart(3, '0')}</Text>
-      <Text style={styles.name}>{item.name}</Text>
-    </Pressable>
-  );
+    return (
+        <Pressable
+            style={({ pressed }) => [styles.card, pressed && styles.pressed]}
+            onPress={onPress}
+        >
+            <Image source={{ uri: item.image }} style={styles.image} />
+            <Text style={styles.number}>#{String(item.id).padStart(3, '0')}</Text>
+            <Text style={styles.name}>{item.name}</Text>
+        </Pressable>
+    );
 }
 
 const styles = StyleSheet.create({
