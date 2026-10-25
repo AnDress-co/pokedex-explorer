@@ -10,12 +10,17 @@ export default function DetailScreen({ route, navigation }) {
     return (
         <ScrollView contentContainerStyle={styles.container}>
 
-            
+
             <Image source={{ uri: dataPokemon.image }} style={styles.image} />
             <Text style={styles.name}>{dataPokemon.name}</Text>
             <Text style={styles.number}>#{String(dataPokemon.id).padStart(3, '0')}</Text>
 
-            {status === 'loading' && <ActivityIndicator size="large" style={styles.loader} />}
+            {status === 'loading' && (
+                <View style={styles.loader}>
+                    <ActivityIndicator size="large" />
+                    <Text>Cargando detalle...</Text>
+                </View>
+            )}
 
             {status === 'error' && (
                 <View style={styles.center}>
