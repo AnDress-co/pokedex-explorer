@@ -1,20 +1,43 @@
+import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ListScreen from './src/screens/ListScreen';
+import DetailScreen from './src/screens/DetailScreen';
+
+// CONCEPTO: Navegador (stack navigator)
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <StatusBar style="dark" />
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="List"
+            screenOptions={{              
+              contentStyle: { backgroundColor: '#F5F5F7' } 
+            }}
+          >
+            <Stack.Screen 
+              name="List" 
+              component={ListScreen} 
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen 
+              name="Detail" 
+              component={DetailScreen} 
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  container: { flex: 1, backgroundColor: '#F5F5F7' },
 });
